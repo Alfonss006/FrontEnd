@@ -1,0 +1,39 @@
+<mat-card class="animated fadInLeft">
+    <mat-card-header >
+        <mat-card-title color="primary">Ultimas Noticias</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <!---->
+        <div>
+        <div >
+
+                <table mat-table [dataSource]="Data" class="example-table"
+                       matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+                  <!-- Number Column -->
+                  <ng-container matColumnDef="Titulo">
+                   <th hidden mat-header-cell *matHeaderCellDef>Titulo</th>
+                    <td mat-cell *matCellDef="let row" appearance="outline">
+                        <h3><a target="_blank" href='{{row.url}}'>{{row.title}}</a></h3>
+                        <p>puntos {{row.score}} por {{row.by}} | <a routerLink="/story/{{row.id}}"> {{row.descendants}} comentarios</a></p>
+                    </td>
+                  </ng-container>
+
+                  <tr mat-header-row *matHeaderRowDef="Head"></tr>
+                  <tr mat-row *matRowDef="let row; columns: Head;"></tr>
+                </table>
+              </div>
+            
+              <mat-paginator  #paginator name="paginator" [pageSizeOptions]="[25 , 50 , 100 ]" [pageSize]="50"></mat-paginator>
+            </div>
+        <!--
+        <div *ngFor="let noticia of noticias">
+            <h3><a target="_blank" href='{{noticia.url}}'> {{noticia.title}}</a></h3>
+              <p>puntos {{noticia.score}} by {{noticia.by}} | <a href=""> {{noticia.descendants}} comentarios</a></p>
+          </div>-->
+    </mat-card-content>
+    <mat-card-actions align="start">       
+    </mat-card-actions>
+    <mat-card-footer align="end">
+            <h5 >by darwin poblete</h5>
+    </mat-card-footer>
+</mat-card>

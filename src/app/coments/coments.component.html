@@ -1,0 +1,15 @@
+<div  *ngFor="let comentario of comentarios">
+  <!--  <mat-divider></mat-divider>
+    <p> <strong> {{comentario.by}} </strong> |</p>  
+    <p  [innerHTML]="comentario.text"></p>-->
+   <mat-accordion displayMode="default" [multi]="true"
+                  [hideToggle]="false">
+       <mat-expansion-panel [expanded]="comentario != null" [hideToggle]="false">
+           <mat-expansion-panel-header>{{comentario.by}}</mat-expansion-panel-header>
+            <p [innerHTML]="comentario.text"></p>
+            <mat-expansion-panel *ngFor="let coment of comentario.response">
+                <mat-expansion-panel-header>{{coment.by}}</mat-expansion-panel-header>
+            </mat-expansion-panel>
+       </mat-expansion-panel>
+   </mat-accordion>
+</div>
