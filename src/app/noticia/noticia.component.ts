@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { NewsService } from '../services/news.service';
-import { noticia } from '../noticia';
+import { Item } from '../Item';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 @Component({
@@ -10,11 +10,13 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class NoticiaComponent implements OnInit , AfterViewInit {
   rutas: string[];
-  noticias: noticia[];
+  noticias: Item[];
   Head: string [];
+  fecha: Date;
+  cargado = true;
   @ViewChild(MatSort, ) sort: MatSort;
   @ViewChild(MatPaginator, ) paginator: MatPaginator;
-  Data = new MatTableDataSource<noticia>();
+  Data = new MatTableDataSource<Item>();
 
 
   constructor(private SNews: NewsService) {
@@ -24,13 +26,13 @@ export class NoticiaComponent implements OnInit , AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.traertop();
     this.paginator.showFirstLastButtons = true;
     this.Data.paginator = this.paginator;
     this.Data.data = this.noticias;
   }
 
   ngOnInit() {
+    this.traertop();
   }
 
   traertop(): void {
@@ -45,6 +47,7 @@ export class NoticiaComponent implements OnInit , AfterViewInit {
     this.SNews.getItem(e).subscribe( x => {
     this.noticias.push(x);
     this.Data.data = this.noticias;
+    this.cargado = false;
     this.Data._updateChangeSubscription();
     });
   });
