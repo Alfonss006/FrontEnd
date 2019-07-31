@@ -9,6 +9,8 @@ import { NewsService } from './services/news.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ComentsComponent } from './coments/coments.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { ComentsComponent } from './coments/coments.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]

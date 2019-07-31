@@ -5,7 +5,7 @@
    <mat-accordion displayMode="default" [multi]="true"
                   [hideToggle]="false">
        <mat-expansion-panel [expanded]="comentario != null" [hideToggle]="false">
-           <mat-expansion-panel-header> <strong> {{comentario.by}} </strong></mat-expansion-panel-header>
+           <mat-expansion-panel-header class="head"> <strong> {{comentario.by}} </strong></mat-expansion-panel-header>
             <p [innerHTML]="comentario.text"></p>
             <div class="divNone" *ngIf="comentario.kids != null">
               <div class="divNone" *ngFor="let item of comentario.kids">
