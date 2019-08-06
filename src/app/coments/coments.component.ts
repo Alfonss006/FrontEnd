@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 export class ComentsComponent implements OnInit {
   @Input() public id?: string;
   comentarios: Item[];
+  cargado = false;
   item: Item;
   fecha: Date;
   constructor(
@@ -36,6 +37,7 @@ export class ComentsComponent implements OnInit {
       this.item.kids.forEach(e => {
           this.snoticia.getItem(e.toString()).subscribe(responsecoment => {
             this.comentarios.push(responsecoment);
+            this.cargado = true;
           });
         });
       }

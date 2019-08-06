@@ -2,16 +2,25 @@
     <!--<mat-divider></mat-divider>
     <p> <strong> {{comentario.by}} </strong> |</p>  
     <p  [innerHTML]="comentario.text"></p>-->
-   <mat-accordion displayMode="default" [multi]="true"
-                  [hideToggle]="false">
-       <mat-expansion-panel [expanded]="comentario != null" [hideToggle]="false">
-           <mat-expansion-panel-header class="head"> <strong> {{comentario.by}} </strong></mat-expansion-panel-header>
+    <div *ngIf="cargado ; then comentado else cargando">
+
+    </div>
+    <ng-template #comentado>
+
+        <mat-accordion displayMode="default" [multi]="true"
+        [hideToggle]="false">
+        <mat-expansion-panel [expanded]="comentario != null" [hideToggle]="false">
+            <mat-expansion-panel-header class="head"> <strong> {{comentario.by}} </strong></mat-expansion-panel-header>
             <p [innerHTML]="comentario.text"></p>
             <div class="divNone" *ngIf="comentario.kids != null">
               <div class="divNone" *ngFor="let item of comentario.kids">
                   <app-coments [id]="item"></app-coments>
-              </div>
+                </div>
             </div>
-       </mat-expansion-panel>
-   </mat-accordion>
+        </mat-expansion-panel>
+    </mat-accordion>
+</ng-template>
+<ng-template #cargando>
+    <mat-spinner></mat-spinner>
+</ng-template>
 </div>

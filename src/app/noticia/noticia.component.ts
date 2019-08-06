@@ -38,7 +38,6 @@ export class NoticiaComponent implements OnInit , AfterViewInit {
   traertop(): void {
     this.SNews.getIndice().subscribe(x => {
       this.rutas = x;
-      console.log(x);
       this.TodaNoticia();
       });
   }

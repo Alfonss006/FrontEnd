@@ -26,13 +26,13 @@
   ],
   "DataGroup": {
     "name" : "external" ,
-    "urls": ["https://hacker-news.firebaseio.com/v0/item/**",
-       "https://hacker-news.firebaseio.com/**"] ,
+    "urls": ["https://hacker-news.firebaseio.com/v0/item/",
+       "https://hacker-news.firebaseio.com/v0/"] ,
     "version?": 1 ,
     "cacheConfig": {
-      "maxSize": 10,
+      "maxSize": 10 ,
       "maxAge": "1d" ,
-      "timeout?": "4s",
+      "timeout?": "4s" ,
       "strategy?": "freshness" 
     }
   }
